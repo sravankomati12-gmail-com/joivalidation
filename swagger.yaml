@@ -1,0 +1,113 @@
+swagger: "2.0"
+info:
+  title: demo crud
+  description: This is my demo crud Project
+  version: 1.0
+  contact:
+    email: sravankomati.vision@gmail.com
+  servers:
+    -url: "http://localhost:8080/"
+    description: This is my local server
+
+schemes: [http,https]
+
+securityDefinitions:  
+  JWT:  
+    type: apiKey
+    in: header
+    name: Authorization
+
+tags: [
+  {name: User APIs,
+  description: User All APIs},
+  ]
+
+paths:
+
+#Register
+  /v1/add:
+    post:
+      tags: [User APIs]
+      summary: Register User & Admin
+      parameters:
+      - in: body
+        name: user
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+
+      responses:
+        200:
+          description: Success
+
+#Get users
+  /v1/list:
+    get:
+      tags: [User APIs]
+      summary: Get User by Id 
+      description: Get User by Id 
+      responses:
+        200:
+          description: Success
+
+#Get users by id
+  /v1/get:
+    get:
+      tags: [User APIs]
+      summary: Get User by Id 
+      description: Get User by Id 
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Success
+
+#update
+  /v1/update:
+    post:
+      tags: [User APIs]
+      summary: Register User & Admin
+      parameters:
+      - in: body
+        name: user
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+            id:
+              type: string
+
+      responses:
+        200:
+          description: Success
+
+#Delete 
+  /v1/delete:
+    delete:
+      tags: [User APIs]
+      summary: Delete referenceBy by Id 
+      description: Delete referenceBy by Id 
+      parameters:
+        - name: id
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success
